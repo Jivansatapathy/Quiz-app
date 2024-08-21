@@ -1,6 +1,6 @@
 const questions = [
     {
-        question: "Tsarists power in Russia collapsed in the year"
+        question: "Tsarists power in Russia collapsed in the year",
         answers: [
             { text: "1905", correct: false},
             { text: "1916", correct: false},
@@ -9,7 +9,7 @@ const questions = [
         ]
     },
     {
-        question: "The Leader of the Bolshevik party was?"
+        question: "The Leader of the Bolshevik party was?",
         answers: [
             { text: "Stalin", correct: false},
             { text: "Lenin", correct: true},
@@ -17,7 +17,7 @@ const questions = [
             { text: "Karl-Marx", correct: false},
         ]
     },{
-        question: "Tsarina Alexander was of the "
+        question: "Tsarina Alexander was of the ",
         answers: [
             { text: "German Origin", correct: true},
             { text: "French Origin", correct: false},
@@ -26,7 +26,7 @@ const questions = [
         ]
     },
     {
-        question: "The main occupation of the people of Russia in the beginning of the twentieth century was "
+        question: "The main occupation of the people of Russia in the beginning of the twentieth century was ",
         answers: [
             { text: "Manufacturing", correct: false},
             { text: "Poultry Farming", correct: false},
@@ -38,7 +38,7 @@ const questions = [
 
 
 const questionElement = document.getElementById("question");
-const answerButton = document.getElementById("answer-buttons");
+const answerButtons = document.getElementById("answer-buttons");
 const nextButton = document.getElementById("next-btn");
 
 let currentQuestionIndex = 0;
@@ -47,12 +47,30 @@ let score = 0;
 function startQuiz(){
     currentQuestionIndex = 0;
     score = 0;
-    nextButton.innerhtml = "Next";
+    nextButton.innerHtml = "Next";
     showQuestion();
 }
 
 function showQuestion(){
+    resetState();
     let currentQuestion = questions[currentQuestionIndex];
     let questionNo = currentQuestionIndex + 1;
     questionElement.innerHTML = questionNo + "." + currentQuestion.question;
+
+    currentQuestion.answers.forEach(answer => {
+        const button = document.createElement("button");
+        button.innerHTML = answer.text;
+        button.classList.add("btn");
+        answerButton.appendChild(button);
+    });
 }
+
+
+function resetState(){
+    nextButton.style.display = "none";
+    while(answerButtons.firstChild){
+        answerButtons.removeChild
+    }
+}
+
+startQuiz();
